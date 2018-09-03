@@ -8,7 +8,7 @@ import { BookItem } from "./BookItem"
 import { onSearchAction, listSearchedBooks } from "../redux/actions/searchActions"
 import { addToFavoritesAction } from "../redux/actions/favoritesActions"
 import { addToPlan, removeFromPlan } from "../redux/actions/planActions"
-import { addToReadingList } from "../redux/actions/readingListActions"
+import { addToReadingList, removeFromReadingList } from "../redux/actions/readingListActions"
 import { addToFinishedList } from "../redux/actions/finishedReadingActions"
 
 import { connect } from "react-redux"
@@ -48,7 +48,15 @@ class MainPage extends Component {
         this.props.onAddToReadingList(book)
     }
 
+    handleRemoveFromReadingList = (bookId) => {
+        const readingListBooks = this.props.readingListReducer.books
+        let filteredBooks = readingListBooks.filter(book => book.id !== bookId)
+        this.props.onRemoveFromReadingList(filteredBooks)
+    }
+
     handleAddToFinishedList = (book) => {
+        this.handleAddToReadingList(book)
+        this.handleRemoveFromReadingList(book.id)
         this.props.onAddToFinishedList(book)
     }
 
@@ -124,6 +132,7 @@ const mapDispatchToProps = () => ({
     onAddToPlan: val => store.dispatch(addToPlan(val)),
     onRemoveFromPlan: val => store.dispatch(removeFromPlan(val)),
     onAddToReadingList: val => store.dispatch(addToReadingList(val)),
+    onRemoveFromReadingList: val => store.dispatch(removeFromReadingList(val)),
     onAddToFinishedList: val => store.dispatch(addToFinishedList(val)),
 })
 
