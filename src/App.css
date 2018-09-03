@@ -1,0 +1,132 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: rgb(116, 140, 252);
+  font-weight: bolder;
+  font-family: serif;
+  font-size: 2em;
+}
+
+.unknown-thumbnail {
+  width: 50%;
+  height: 30%;
+  margin-top:20px;
+  margin-bottom: 20px;
+}
+
+.header-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.nav {
+  margin: 0px; 
+  background-color: #222; 
+  
+}
+
+.nav-item {
+  color: rgb(192, 192, 192);
+  border-radius: 0%;
+}
+
+.nav-link {
+  border-radius: 0%;
+}
+
+.nav-item:hover {
+  color: rgb(116, 140, 252);
+}
+
+.active-tab {
+  border-bottom: 7px solid rgb(116, 140, 252);
+  color:  rgb(116, 140, 252);
+  padding: 20px;
+}
+
+.search-page {
+  position: relative;
+  top: 75px; 
+}
+
+.books-list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 20px;
+  justify-content: space-evenly;
+}
+
+.book-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 25%;
+  margin: 15px 1px; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 15px;
+  border-radius: 7px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.book-item:hover {
+  box-shadow: 0 4px 8px 0 rgba(49, 69, 243, 0.2), 0 6px 20px 0 rgba(66, 99, 247, 0.19);
+}
+
+.buttons-div {
+  margin-top: 20px;
+}
+
+.details-div {
+  margin-top: 20px;
+}
+
+.btn {
+  margin: 5px; 
+}
+
+.search-icon {
+  position: relative;
+  bottom: 3px;
+}
+
+.search-input {
+  padding: 5px;
+  border-top: none;
+}
+
+.img-thumbnail {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.details-text {
+  display: block;
+  text-align: left;
+}
+
+h6 {
+  font-weight: bolder;
+}
+
+h1 {
+  font-weight: bolder;
+}
+
+
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
