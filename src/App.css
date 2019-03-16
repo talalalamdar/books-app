@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  margin: 150px;
+  margin: 50px;
   color: #fff;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -30,13 +30,13 @@
   position: sticky;
   top: 0px;
   z-index: 10;
-  padding-left: 50px;
 }
 
 .nav-item {
   color: rgb(192, 192, 192);
   border-radius: 0%;
   z-index: 300;
+  font-size: 15px;
 }
 
 .nav-link {
@@ -247,10 +247,12 @@ input::focus {
   }
   .App-header {
     font-size: 4em;
+    margin: 150px;
   }
   .header-img {
     height: 650px !important;
   }
+
 }
 
 @media only screen and (min-width: 1024px) {
