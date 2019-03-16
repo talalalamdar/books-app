@@ -7,6 +7,7 @@ import MyFavorites from "./components/MyBookmarks"
 import MyPlan from "./components/MyPlan"
 import ReadingList from "./components/ReadingList.js"
 import FinishedPage from "./components/FinishedPage"
+import image from './assets/library4.png'
 
 
 // import icons, and tools for react router, redux adn store 
@@ -22,9 +23,14 @@ class App extends Component {
       <div className="App">
         <Router history={history}>
           <div>
-            <header className="App-header">
-              <h1 className="App-title">Books App <Octicon className="header-icon" icon={Book} /></h1>
-            </header>
+            <div style={{ width: '100%', height: '750px', position: 'relative' }} className="header-img">
+              <img style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0 }} src={image} />
+              <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0, backgroundColor: 'rgba(0,0,0, 0.5)' }}>
+                <header className="App-header">
+                  <h1 className="App-title">Books App </h1>
+                </header>
+              </div>
+            </div>
             <nav className="nav">
               <div style={{ zIndex: 30, display: 'flex', flexWrap: 'wrap' }}>
                 <NavLink activeClassName="active-tab" to="/search" className="nav-item nav-link"> Search books </NavLink>
@@ -33,11 +39,11 @@ class App extends Component {
                 <NavLink activeClassName="active-tab" to="/finished" className="nav-item nav-link"> Finished </NavLink>
                 <NavLink activeClassName="active-tab" to="/bookmarks" className="nav-item nav-link"> Bookmarks </NavLink>
               </div>
-              <diV style={styles.authorDiv} className='author-div'>
+              <div style={styles.authorDiv} className='author-div'>
                 <span>
-                  by <a style={{color: 'gray'}} href="https://talalalamdar.surge.sh" target="_blank">Talal Alamdar</a>
+                  by <a style={{ color: 'gray' }} href="https://talalalamdar.surge.sh" target="_blank">Talal Alamdar</a>
                 </span>
-              </diV>
+              </div>
             </nav>
             <div>
               <Route exact path="/" component={MainPage}></Route>
@@ -48,7 +54,7 @@ class App extends Component {
               <Route exact path="/bookmarks" component={MyFavorites}></Route>
             </div>
             <div className="scroll-top-div" style={styles.scrollTopDiv} onClick={() => window.location.href = '#top'}>
-              <Octicon size='30px' icon={ArrowUp} />
+              <Octicon size={30} icon={ArrowUp} />
             </div>
           </div>
         </Router>

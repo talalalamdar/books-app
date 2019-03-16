@@ -3,17 +3,21 @@
 }
 
 .App-header {
-  background-color: #222;
-  padding: 20px;
-  color: rgb(144, 19, 254);
+  margin: 150px;
+  color: #fff;
   font-family: 'Roboto', sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   font-size: 2em;
+  text-align: left;
 }
 
 .header-icon {
   width: 60px;
   height: 60px;
+}
+
+.header-img {
+  height: 500px !important;
 }
 
 .App-title {
@@ -235,9 +239,16 @@ input::focus {
   .scroll-top-div {
     right: 10px !important;
     display: inline;
+    z-index: -1;
   }
   .search-btn {
     margin-top: 0px;
+  }
+  .App-header {
+    font-size: 4em;
+  }
+  .header-img {
+    height: 650px !important;
   }
 }
 
@@ -255,5 +266,10 @@ input::focus {
     text-align: right;
     padding-right: 200px;
   }
-
+  .App-header {
+    font-size: 4em;
+  }
+  .header-img {
+    height: 750px !important;
+  }
 }

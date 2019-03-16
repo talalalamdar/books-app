@@ -30,13 +30,14 @@ class SearchPage extends Component {
 
     submitSearch = (e) => {
         e.preventDefault()
-        window.location.href = '#top'
         this.setState({ fetching: true }, () => {
             const { searchQuery } = this.props.searchReducer
             searchBooks(searchQuery)
                 .then(result => {
                     this.props.fetchBooks(result)
                     this.setState({ fetching: false })
+                    let searchDiv = document.getElementById('scroll-to-submit')
+                    searchDiv.scrollIntoView({behavior: 'smooth', top: '1px', block: "start", inline: 'start', alignToTop: true})
                 })
                 .catch(err => console.log(err))
 
@@ -68,7 +69,7 @@ class SearchPage extends Component {
 
         return (
             <div className="search-page">
-                <form onSubmit={(e) => this.submitSearch(e)}>
+                <form id="scroll-to-submit" onSubmit={(e) => this.submitSearch(e)}>
                     <div className='form-wrapper'>
                         <input value={searchQuery} className="search-input" placeholder="Search for a book..." onChange={e => this.handleInputChange(e.target.value)}></input>
                         <button type="submit" className="search-btn" onClick={this.submitSearch}>
