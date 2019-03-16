@@ -64,6 +64,7 @@
   padding: 20px;
   justify-content: center;
   align-items: center;
+  min-height: 700px;
 }
 
 .book-item {
@@ -272,4 +273,8 @@ input::focus {
   .header-img {
     height: 750px !important;
   }
+}
+
+.carousel-inner {
+  height: 100%;
 }

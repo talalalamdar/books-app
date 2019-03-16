@@ -7,24 +7,41 @@ import MyFavorites from "./components/MyBookmarks"
 import MyPlan from "./components/MyPlan"
 import ReadingList from "./components/ReadingList.js"
 import FinishedPage from "./components/FinishedPage"
-import image from './assets/library4.png'
+import image1 from './assets/library1.png'
+import image2 from './assets/library2.png'
+import image3 from './assets/library3.png'
+import image4 from './assets/library4.png'
+import { Carousel } from 'react-bootstrap'
 
 
 // import icons, and tools for react router, redux adn store 
-import Octicon, { Book, ArrowUp } from '@githubprimer/octicons-react'
+import Octicon, { ArrowUp } from '@githubprimer/octicons-react'
 import { Router, Route, NavLink, IndexRoute } from 'react-router-dom'
 import { connect } from "react-redux"
 import { history } from "./redux/store/store"
 
 class App extends Component {
+  imagesArray = [image1, image2, image3, image4]
+
 
   render() {
+
     return (
       <div className="App">
         <Router history={history}>
           <div>
             <div style={{ width: '100%', height: '750px', position: 'relative' }} className="header-img">
-              <img style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0 }} src={image} />
+              <Carousel controls={false}	
+              style={{ width: '100%', height: '100%'}}>
+                {this.imagesArray.map(image => {
+                  return (
+                    <Carousel.Item key={image} style={{ width: '100%', height: '100%' }}>
+                      <img className="d-block w-100" style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0 }} src={image} />
+                    </Carousel.Item>
+                  )
+                })
+                }
+              </Carousel>
               <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0, backgroundColor: 'rgba(0,0,0, 0.5)' }}>
                 <header className="App-header">
                   <h1 className="App-title">Books App </h1>
