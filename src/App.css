@@ -161,7 +161,7 @@
   height: 50px;
   border-radius: 4px;
   vertical-align: bottom;
-  margin-right: 20px;
+  margin-top: 20px;
   background-color: rgb(144, 19, 254);
   color: white;
   border: 1px solid rgb(144, 19, 254);
@@ -235,6 +235,9 @@ input::focus {
   .scroll-top-div {
     right: 10px !important;
     display: inline;
+  }
+  .search-btn {
+    margin-top: 0px;
   }
 }
 
