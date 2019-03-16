@@ -3,12 +3,15 @@ import { connect } from "react-redux"
 import BookItem from "./BookItem"
 import EmptyStatePage from "./EmptyStatePage";
 
-class FinishedPage extends Component {
 
-    finishedList = () => {
-        const { finishedBooks } = this.props.finishedReadingReducer
-        if (finishedBooks) {
-            const books = finishedBooks.map(book => {
+class MyBookmarks extends Component {
+
+
+    favoriteBooksList = () => {
+        const favBooks = this.props.myFavoritesBooks
+        if (favBooks && favBooks.length) {
+            const books = favBooks.map(book => {
+
                 return (
                     <div key={book.id} className="book-item">
                         <BookItem book={book} />
@@ -20,21 +23,21 @@ class FinishedPage extends Component {
     }
 
     render() {
-        const books = this.finishedList()
+        let books =this.favoriteBooksList()
         return (
             <div className="books-list">
-                {books && books.length ? books : <EmptyStatePage message="You haven't read any books!! wtf!?" />}
+                {books && books.length ? books : <EmptyStatePage message="You have no bookmarked books" />}
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    ...state
+    ...state.favoritesReducer
 })
 
 const mapDispatchToProps = () => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(FinishedPage)
+export default connect(mapStateToProps, mapDispatchToProps)(MyBookmarks)

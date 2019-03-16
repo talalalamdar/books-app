@@ -4,19 +4,11 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
   padding: 20px;
-  color: rgb(116, 140, 252);
-  font-weight: bolder;
-  font-family: serif;
+  color: rgb(144, 19, 254);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
   font-size: 2em;
-}
-
-.unknown-thumbnail {
-  width: 50%;
-  height: 30%;
-  margin-top:20px;
-  margin-bottom: 20px;
 }
 
 .header-icon {
@@ -29,53 +21,67 @@
 }
 
 .nav {
-  margin: 0px; 
-  background-color: #222; 
-  
+  margin: 0px;
+  background-color: #222;
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+  padding-left: 50px;
 }
 
 .nav-item {
   color: rgb(192, 192, 192);
   border-radius: 0%;
+  z-index: 300;
 }
 
 .nav-link {
   border-radius: 0%;
+  padding: 20px;
 }
 
 .nav-item:hover {
-  color: rgb(116, 140, 252);
+  color: rgb(144, 19, 254);
 }
 
 .active-tab {
-  border-bottom: 7px solid rgb(116, 140, 252);
-  color:  rgb(116, 140, 252);
+  border-bottom: 7px solid rgb(144, 19, 254);
+  color: rgb(116, 140, 252);
   padding: 20px;
 }
 
 .search-page {
   position: relative;
-  top: 75px; 
 }
 
 .books-list {
   display: flex;
   flex-flow: row wrap;
   padding: 20px;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-item {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 25%;
-  margin: 15px 1px; 
+  margin: 15px 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding: 15px;
   border-radius: 7px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.book-info {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  padding: 20px;
+  color: white !important;
 }
 
 .book-item:hover {
@@ -83,15 +89,62 @@
 }
 
 .buttons-div {
-  margin-top: 20px;
+  margin-top: 15px;
+  display: flex;
+  flex-flow: row wrap;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.buttons-div>div {
+  opacity: .5
+}
+
+.buttons-div>a {
+  opacity: .5
+}
+
+.buttons-div>div:hover {
+  opacity: 1
+}
+
+.buttons-div>a:hover {
+  opacity: 1
+}
+
+.buttons-div>a {
+  width: 100% !important;
 }
 
 .details-div {
   margin-top: 20px;
+  text-align: left;
+  font-size: 16px;
 }
 
 .btn {
-  margin: 5px; 
+  margin: 5px;
+}
+
+.remove-btn {
+  width: 50%;
+  height: 50px;
+  border: 1px solid red;
+  color: red;
+  font-size: 18px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.remove-btn:hover {
+  background-color: red;
+  color: gray;
+  opacity: 0.5;
 }
 
 .search-icon {
@@ -104,29 +157,100 @@
   border-top: none;
 }
 
-.img-thumbnail {
-  margin-top: 5px;
-  margin-bottom: 20px;
+.search-btn {
+  height: 50px;
+  border-radius: 4px;
+  vertical-align: bottom;
+  margin-right: 20px;
+  background-color: rgb(144, 19, 254);
+  color: white;
+  border: 1px solid rgb(144, 19, 254);
+  font-size: 18px;
+  padding: 8px;
+  width: 200px;
+  opacity: .5;
 }
 
-.details-text {
-  display: block;
-  text-align: left;
+.search-btn:hover {
+  opacity: 1
+}
+
+.scroll-top-div {
+  display: none;
+}
+
+.scroll-top-div:hover {
+  background-color: rgb(144, 19, 254);
+  color: white !important;
 }
 
 h6 {
   font-weight: bolder;
+  color: white;
 }
 
 h1 {
   font-weight: bolder;
 }
 
-
 a {
-  color: black;
+  color: white;
+}
+
+a:visited {
+  color: white
 }
 
 a:hover {
-  text-decoration: none;
+  color: white;
+}
+
+form {
+  text-align: center;
+  background-color: #222;
+  width: 100%;
+  padding: 20px;
+}
+
+form>input {
+  border: none;
+  border-bottom: 1px solid rgb(144, 19, 254);
+  color: rgb(144, 19, 254);
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
+input::focus {
+  border: 1px solid rgb(144, 19, 254) !important;
+  -webkit--border: 1px solid rgb(144, 19, 254) !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .nav-item {
+    width: 80px;
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px;
+  }
+  .scroll-top-div {
+    right: 10px !important;
+    display: inline;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .nav {
+    padding-left: 200px;
+  }
+  .nav-item {
+    width: auto;
+  }
+  .scroll-top-div {
+    right: 60px !important;
+  }
+  form {
+    text-align: right;
+    padding-right: 200px;
+  }
+
 }
