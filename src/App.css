@@ -148,7 +148,7 @@
 
 .remove-btn:hover {
   background-color: red;
-  color: gray;
+  color: white;
   opacity: 0.5;
 }
 
@@ -189,6 +189,10 @@
   color: white !important;
 }
 
+.carousel-inner {
+  height: 100%;
+}
+
 h6 {
   font-weight: bolder;
   color: white;
@@ -215,6 +219,7 @@ form {
   background-color: #222;
   width: 100%;
   padding: 20px;
+  z-index: 3;
 }
 
 form>input {
@@ -240,7 +245,7 @@ input::focus {
   .scroll-top-div {
     right: 10px !important;
     display: inline;
-    z-index: -1;
+    z-index: 1;
   }
   .search-btn {
     margin-top: 0px;
@@ -252,7 +257,6 @@ input::focus {
   .header-img {
     height: 650px !important;
   }
-
 }
 
 @media only screen and (min-width: 1024px) {
@@ -275,8 +279,4 @@ input::focus {
   .header-img {
     height: 750px !important;
   }
-}
-
-.carousel-inner {
-  height: 100%;
 }

@@ -9,6 +9,7 @@ import { addToFinishedList, removeFromFinishedList } from "../redux/actions/fini
 
 import store from "../redux/store/store"
 import { connect } from "react-redux"
+import { Modal, Button } from 'react-bootstrap'
 
 const unknownThumbNailLink = "https://vignette.wikia.nocookie.net/burningsuns/images/4/40/BurningSuns_unknown_book_render_1.png/revision/latest?cb=20151227170239"
 
@@ -16,10 +17,12 @@ const unknownThumbNailLink = "https://vignette.wikia.nocookie.net/burningsuns/im
 class BookItem extends Component {
 
     state = {
-        bookHoverStatus: false
+        bookHoverStatus: false,
+        showModal: false,
+
     }
 
-    handleAddToFavorite= (book) => {
+    handleAddToFavorite = (book) => {
         this.props.onAddToFavorites(book)
     }
 
@@ -77,6 +80,7 @@ class BookItem extends Component {
     }
 
     handleRemove = (pathname, book) => {
+        console.log(pathname, book)
         if (pathname === '/reading-list') {
             this.handleRemoveFromReadingList(book.id)
         } else if (pathname === '/plan') {
@@ -85,7 +89,19 @@ class BookItem extends Component {
             this.handleRemoveFromFinishedList(book.id)
         } else if (pathname === '/bookmarks') {
             this.handleRemoveFromFavorites(book)
-        } 
+        }
+    }
+
+    displayRemoveModal = () => {
+        this.setState({
+            showModal: true
+        })
+    }
+
+    handleCloseModal = () => {
+        this.setState({
+            showModal: false
+        })
     }
 
     render() {
@@ -137,19 +153,35 @@ class BookItem extends Component {
                             {!isFinishedReadingPage && !isReadingListPage && !isBookmarksPage && !isPlanPage && !finishedReading && !onMyList && (
                                 <div style={this.setStyle((inMyPlan || finishedReading || onMyList))} onClick={() => (!inMyPlan || !finishedReading || !onMyList) && this.handleAddToPlan(this.props.book)}> {(inMyPlan || finishedReading || onMyList) ? 'In my plan' : 'Add to plan'} </div>
                             )}
-                            {!isFinishedReadingPage && !isReadingListPage && !isBookmarksPage && !finishedReading &&  (
+                            {!isFinishedReadingPage && !isReadingListPage && !isBookmarksPage && !finishedReading && (
                                 <div style={this.setStyle((onMyList || finishedReading))} onClick={() => (!onMyList || !finishedReading) && this.handleAddToReadingList(this.props.book)}> {(onMyList || finishedReading) ? 'Currently reading' : 'Add to reading list'} </div>
                             )}
                             {!isFinishedReadingPage && !isBookmarksPage && (
-                                <div style={{...this.setStyle(finishedReading), width: (isMainPage && onMyList) ? '100%' : '50%'}} onClick={() => !finishedReading && this.handleAddToFinishedList(this.props.book)}> {finishedReading ? 'Finished' : 'Add to finished list'} </div>
+                                <div style={{ ...this.setStyle(finishedReading), width: (isMainPage && onMyList) ? '100%' : '50%' }} onClick={() => !finishedReading && this.handleAddToFinishedList(this.props.book)}> {finishedReading ? 'Finished' : 'Add to finished list'} </div>
                             )}
                             {!isMainPage && (
-                                <div className="remove-btn" style={{width: isBookmarksPage ? '100%' : '50%'}} onClick={() => this.handleRemove(window.location.pathname, this.props.book)}> Remove </div>
+                                <div className="remove-btn" style={{ width: isBookmarksPage ? '100%' : '50%' }} onClick={this.displayRemoveModal}> Remove </div>
                             )}
                             <a style={styles.button} target='_blank' href={previewLink} >Preview Book</a>
                         </div>
                     </div>
                 }
+                <Modal style={{ fontSize: '20px' }} show={this.state.showModal} onHide={this.handleCloseModal} size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Remove dialog</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Are you sure you want to remove <strong> {title}</strong> ?</Modal.Body>
+                    <Modal.Footer>
+                        <Button className="btn btn-sm" variant="secondary" onClick={this.handleCloseModal}>
+                            Close
+                  </Button>
+                        <Button style={{backgroundColor: 'rgb(144, 19, 254)'}} className="btn btn-sm" onClick={() => this.handleRemove(window.location.pathname, this.props.book)}>
+                            Remove
+                  </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         )
     }

@@ -12,7 +12,7 @@ class MyBookmarks extends Component {
         if (favBooks && favBooks.length) {
             const books = favBooks.map(book => {
 
-                return (
+                return book.id && (
                     <div key={book.id} className="book-item">
                         <BookItem book={book} />
                     </div>

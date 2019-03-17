@@ -5,9 +5,9 @@ class EmptyStatePage extends React.Component  {
     render() {
 
         return (
-            <diV style={{marginTop: '50px', fontSize: '40px'}}>
+            <div style={{marginTop: '50px', fontSize: '40px'}}>
                 <p>{this.props.message}</p>
-            </diV>
+            </div>
         )
     }
 }

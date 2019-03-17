@@ -7,7 +7,8 @@ export const favoritesReducer = (state = initialState, action) => {
         case "ADD_TO_FAVORITES":
             return { ...state, myFavoritesBooks: [...state.myFavoritesBooks, action.payload]}
         case "REMOVE_FROM_FAVORITES": 
-            return {...state, myFavoritesBooks: action.payload}
+            let filteredFavorites = [...state.myFavoritesBooks].filter(book => book.id !== action.payload.id)
+            return {...state, myFavoritesBooks: [...filteredFavorites]}
         default: 
             return state
     }
