@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import Octicon, { Search, ArrowUp } from '@githubprimer/octicons-react'
+import Octicon, { Search } from '@githubprimer/octicons-react'
 import BookItem from "./BookItem"
 import { connect } from "react-redux"
 
@@ -10,6 +10,7 @@ import EmptyStatePage from "./EmptyStatePage";
 
 import { css } from '@emotion/core';
 import RingLoader from 'react-spinners/RingLoader';
+import posed, { PoseGroup } from 'react-pose'
 
 
 const override = css`
@@ -17,6 +18,21 @@ const override = css`
     margin: 0 auto;
     border-color: red;
 `;
+
+const Box = posed.button({
+    pressable: true,
+    init: { scale: 1 },
+    press: { scale: 0.8 }
+});
+
+const BookContainer = posed.div({
+    enter: {
+        scale: 1,
+        delay: 200,
+    },
+    exit: { scale: 0 }
+});
+
 
 class SearchPage extends Component {
 
@@ -37,7 +53,7 @@ class SearchPage extends Component {
                     this.props.fetchBooks(result)
                     this.setState({ fetching: false })
                     let searchDiv = document.getElementById('scroll-to-submit')
-                    searchDiv.scrollIntoView({behavior: 'smooth', top: '1px', block: "start", inline: 'start', alignToTop: true})
+                    searchDiv.scrollIntoView({ behavior: 'smooth', top: '1px', block: "start", inline: 'start', alignToTop: true })
                 })
                 .catch(err => console.log(err))
 
@@ -51,10 +67,10 @@ class SearchPage extends Component {
         if (booksList.items) {
             const books = booksList.items.map(book => {
 
-                return (
-                    <div key={book.id} className="book-item">
-                        <BookItem book={book} {...this.props} />
-                    </div>
+                return book.id && (
+                    <BookContainer key={book.id} className="book-item">
+                        <BookItem key={book.id} book={book} {...this.props} />
+                    </BookContainer>
 
                 )
             })
@@ -72,11 +88,11 @@ class SearchPage extends Component {
                 <form id="scroll-to-submit" onSubmit={(e) => this.submitSearch(e)}>
                     <div className='form-wrapper'>
                         <input value={searchQuery} className="search-input" placeholder="Search for a book..." onChange={e => this.handleInputChange(e.target.value)}></input>
-                        <button type="submit" className="search-btn" onClick={this.submitSearch}>
+                        <Box type="submit" className="search-btn" onClick={this.submitSearch}>
                             <span style={{ display: 'inline-block' }}>
                                 Search <Octicon className="search-icon" icon={Search} />
                             </span>
-                        </button>
+                        </Box>
                     </div>
                 </form>
                 <div className="books-list">
@@ -90,9 +106,10 @@ class SearchPage extends Component {
                                 loading={true}
                             />
                         </div> :
-                        (books && books.length) ? books : <EmptyStatePage message="No available books" />}
+                        <PoseGroup animateOnMount>
+                            {(books && books.length) ? books : <EmptyStatePage key="empty-page" message="No available books" />}
+                        </PoseGroup>}
                 </div>
-
             </div>
         )
     }

@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+html, body {
+  background-color: #222;
+}
+
 .App-header {
   margin: 50px;
   color: #fff;
@@ -65,6 +69,7 @@
   justify-content: center;
   align-items: center;
   min-height: 700px;
+  background-color: #222;
 }
 
 .book-item {
@@ -76,6 +81,7 @@
   border-radius: 7px;
   cursor: pointer;
   overflow: hidden;
+  z-index: 1;
 }
 
 .book-info {
@@ -160,6 +166,11 @@
 .search-input {
   padding: 5px;
   border-top: none;
+  background-color: #222;
+  border: none;
+  border-bottom: 1px solid rgb(144, 19, 254);
+  color: white;
+  margin-right: 10px;
 }
 
 .search-btn {
@@ -192,6 +203,10 @@
 .carousel-inner {
   height: 100%;
 }
+
+.img-thumbnail {
+  padding: 0px;
+} 
 
 h6 {
   font-weight: bolder;

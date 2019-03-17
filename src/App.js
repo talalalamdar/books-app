@@ -16,7 +16,7 @@ import { Carousel } from 'react-bootstrap'
 
 // import icons, and tools for react router, redux adn store 
 import Octicon, { ArrowUp } from '@githubprimer/octicons-react'
-import { Router, Route, NavLink, IndexRoute } from 'react-router-dom'
+import { Router, Route, NavLink } from 'react-router-dom'
 import { connect } from "react-redux"
 import { history } from "./redux/store/store"
 
@@ -31,12 +31,12 @@ class App extends Component {
         <Router history={history}>
           <div>
             <div style={{ width: '100%', height: '750px', position: 'relative' }} className="header-img">
-              <Carousel controls={false}	
-              style={{ width: '100%', height: '100%'}}>
+              <Carousel controls={false}
+                style={{ width: '100%', height: '100%' }}>
                 {this.imagesArray.map(image => {
                   return (
                     <Carousel.Item key={image} style={{ width: '100%', height: '100%' }}>
-                      <img className="d-block w-100" style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0 }} src={image} />
+                      <img className="d-block w-100" style={{ position: 'absolute', width: '100%', height: '100%', top: 0, right: 0 }} src={image} alt='carousel-img'/>
                     </Carousel.Item>
                   )
                 })
@@ -58,7 +58,7 @@ class App extends Component {
               </div>
               <div style={styles.authorDiv} className='author-div'>
                 <span>
-                  by <a style={{ color: 'gray' }} href="https://talalalamdar.surge.sh" target="_blank">Talal Alamdar</a>
+                  by <a style={{ color: 'gray' }} href="https://talalalamdar.surge.sh" target="__blank">Talal Alamdar</a>
                 </span>
               </div>
             </nav>

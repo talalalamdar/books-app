@@ -10,10 +10,13 @@ import { addToFinishedList, removeFromFinishedList } from "../redux/actions/fini
 import store from "../redux/store/store"
 import { connect } from "react-redux"
 import { Modal, Button } from 'react-bootstrap'
+import posed from 'react-pose'
 
 const unknownThumbNailLink = "https://vignette.wikia.nocookie.net/burningsuns/images/4/40/BurningSuns_unknown_book_render_1.png/revision/latest?cb=20151227170239"
 
-
+const Item = posed.div({
+    open: { y: 0, opacity: 1 },
+});
 class BookItem extends Component {
 
     state = {
@@ -80,7 +83,6 @@ class BookItem extends Component {
     }
 
     handleRemove = (pathname, book) => {
-        console.log(pathname, book)
         if (pathname === '/reading-list') {
             this.handleRemoveFromReadingList(book.id)
         } else if (pathname === '/plan') {
@@ -131,7 +133,7 @@ class BookItem extends Component {
         const isPlanPage = window.location.pathname === '/plan'
 
         return (
-            <div style={{ position: 'relative', height: '400px', width: '300px' }} onMouseEnter={() => this.handleMouseHover(true)} onMouseLeave={() => this.handleMouseHover(false)}>
+            <Item pose='open' style={{ position: 'relative', height: '400px', width: '300px' }} onMouseEnter={() => this.handleMouseHover(true)} onMouseLeave={() => this.handleMouseHover(false)}>
                 <img style={{ position: 'absolute', top: '0px', left: '0px', width: '100%', height: '100%', zIndex: -10 }} className={imageLinks ? "img-thumbnail" : "unknown-thumbnail"} src={imageLinks ? imageLinks.thumbnail : unknownThumbNailLink} alt={`${title}-book`} />
 
 
@@ -177,12 +179,12 @@ class BookItem extends Component {
                         <Button className="btn btn-sm" variant="secondary" onClick={this.handleCloseModal}>
                             Close
                   </Button>
-                        <Button style={{backgroundColor: 'rgb(144, 19, 254)'}} className="btn btn-sm" onClick={() => this.handleRemove(window.location.pathname, this.props.book)}>
+                        <Button style={{ backgroundColor: 'rgb(144, 19, 254)' }} className="btn btn-sm" onClick={() => this.handleRemove(window.location.pathname, this.props.book)}>
                             Remove
                   </Button>
                     </Modal.Footer>
                 </Modal>
-            </div>
+            </Item>
         )
     }
 

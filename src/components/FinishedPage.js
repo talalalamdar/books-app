@@ -2,6 +2,15 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import BookItem from "./BookItem"
 import EmptyStatePage from "./EmptyStatePage";
+import posed, { PoseGroup } from "react-pose";
+
+const BookContainer = posed.div({
+    enter: {
+        scale: 1,
+        delay: 200,
+    },
+    exit: { scale: 0 }
+});
 
 class FinishedPage extends Component {
 
@@ -10,9 +19,9 @@ class FinishedPage extends Component {
         if (finishedBooks) {
             const books = finishedBooks.map(book => {
                 return (
-                    <div key={book.id} className="book-item">
+                    <BookContainer key={book.id} className="book-item">
                         <BookItem book={book} />
-                    </div>
+                    </BookContainer>
                 )
             })
             return books
@@ -23,7 +32,9 @@ class FinishedPage extends Component {
         const books = this.finishedList()
         return (
             <div className="books-list">
-                {books && books.length ? books : <EmptyStatePage message="You haven't read any books!! wtf!?" />}
+                <PoseGroup animateOnMount>
+                    {books && books.length ? books : <EmptyStatePage key="empty-page" message="You haven't read any books!! wtf!?" />}
+                </PoseGroup>
             </div>
         )
     }

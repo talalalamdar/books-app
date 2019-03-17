@@ -2,7 +2,16 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import BookItem from "./BookItem"
 import EmptyStatePage from "./EmptyStatePage";
+import posed, { PoseGroup } from "react-pose";
 
+
+const BookContainer = posed.div({
+    enter: {
+        scale: 1,
+        delay: 200,
+    },
+    exit: { scale: 0 }
+});
 
 class MyBookmarks extends Component {
 
@@ -13,9 +22,9 @@ class MyBookmarks extends Component {
             const books = favBooks.map(book => {
 
                 return book.id && (
-                    <div key={book.id} className="book-item">
+                    <BookContainer key={book.id} className="book-item">
                         <BookItem book={book} />
-                    </div>
+                    </BookContainer>
                 )
             })
             return books
@@ -23,10 +32,12 @@ class MyBookmarks extends Component {
     }
 
     render() {
-        let books =this.favoriteBooksList()
+        let books = this.favoriteBooksList()
         return (
             <div className="books-list">
-                {books && books.length ? books : <EmptyStatePage message="You have no bookmarked books" />}
+                <PoseGroup animateOnMount>
+                    {books && books.length ? books : <EmptyStatePage key="empty-page" message="You have no bookmarked books" />}
+                </PoseGroup>
             </div>
         )
     }
