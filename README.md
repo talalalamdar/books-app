@@ -4,6 +4,6 @@ Books App fetching data from Google Books API:
 - Bookmark,
 - preview book
 - add to plan
-- or reading list
+- or reading list &nbsp;
 Built using HTML, CSS, javaScript, ReactJs, Redux, React-router, Bootstrap, and Restful API
-Source code : https://github.com/talalalamdar/books-app
+[Demo](https://github.com/talalalamdar/books-app)
