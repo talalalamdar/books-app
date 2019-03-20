@@ -28,7 +28,7 @@ const Box = posed.button({
 const BookContainer = posed.div({
     enter: {
         scale: 1,
-        delay: 200,
+        delay: props => props.i * 100,
     },
     exit: { scale: 0 }
 });
@@ -65,10 +65,10 @@ class SearchPage extends Component {
 
 
         if (booksList.items) {
-            const books = booksList.items.map(book => {
+            const books = booksList.items.map((book, i) => {
 
                 return book.id && (
-                    <BookContainer key={book.id} className="book-item">
+                    <BookContainer key={book.id} i={i} className="book-item">
                         <BookItem key={book.id} book={book} {...this.props} />
                     </BookContainer>
 
@@ -87,7 +87,7 @@ class SearchPage extends Component {
             <div className="search-page">
                 <form id="scroll-to-submit" onSubmit={(e) => this.submitSearch(e)}>
                     <div className='form-wrapper'>
-                        <input value={searchQuery} className="search-input" placeholder="Search for a book..." onChange={e => this.handleInputChange(e.target.value)}></input>
+                        <input value={searchQuery} onBlur={() => this.style={animationName: 'InputBlur'}} className="search-input" placeholder="Search for a book..." onChange={e => this.handleInputChange(e.target.value)}></input>
                         <Box type="submit" className="search-btn" onClick={this.submitSearch}>
                             <span style={{ display: 'inline-block' }}>
                                 Search <Octicon className="search-icon" icon={Search} />

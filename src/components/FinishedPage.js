@@ -7,7 +7,7 @@ import posed, { PoseGroup } from "react-pose";
 const BookContainer = posed.div({
     enter: {
         scale: 1,
-        delay: 200,
+        delay: props => props.i * 100,
     },
     exit: { scale: 0 }
 });
@@ -17,9 +17,9 @@ class FinishedPage extends Component {
     finishedList = () => {
         const { finishedBooks } = this.props.finishedReadingReducer
         if (finishedBooks) {
-            const books = finishedBooks.map(book => {
+            const books = finishedBooks.map((book, i) => {
                 return (
-                    <BookContainer key={book.id} className="book-item">
+                    <BookContainer key={book.id} i={i} className="book-item">
                         <BookItem book={book} />
                     </BookContainer>
                 )

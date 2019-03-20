@@ -8,7 +8,7 @@ import posed, { PoseGroup } from "react-pose";
 const BookContainer = posed.div({
     enter: {
         scale: 1,
-        delay: 200,
+        delay: props => props.i * 100,
     },
     exit: { scale: 0 }
 });
@@ -19,10 +19,10 @@ class MyBookmarks extends Component {
     favoriteBooksList = () => {
         const favBooks = this.props.myFavoritesBooks
         if (favBooks && favBooks.length) {
-            const books = favBooks.map(book => {
+            const books = favBooks.map((book, i) => {
 
                 return book.id && (
-                    <BookContainer key={book.id} className="book-item">
+                    <BookContainer key={book.id} i={i} className="book-item">
                         <BookItem book={book} />
                     </BookContainer>
                 )

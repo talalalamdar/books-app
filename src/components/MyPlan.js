@@ -7,7 +7,7 @@ import posed, { PoseGroup } from 'react-pose'
 const BookContainer = posed.div({
     enter: {
         scale: 1,
-        delay: 200,
+        delay: props => props.i * 100,
     },
     exit: { scale: 0 }
 });
@@ -18,9 +18,9 @@ class MyPlan extends Component {
         const planBooks = this.props.planReducer.booksPlan
 
         if (planBooks) {
-            const books = planBooks.map(book => {
+            const books = planBooks.map((book, i) => {
                 return (
-                    <BookContainer pose='enter' initialPose='exit' key={book.id} className="book-item">
+                    <BookContainer pose='enter' i={i} initialPose='exit' key={book.id} className="book-item">
                         <BookItem book={book} />
                     </BookContainer>
                 )

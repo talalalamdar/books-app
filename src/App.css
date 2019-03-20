@@ -2,14 +2,15 @@
   text-align: center;
 }
 
-html, body {
+html,
+body {
   background-color: #222;
 }
 
 .App-header {
   margin: 50px;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 2em;
   text-align: left;
@@ -49,7 +50,9 @@ html, body {
 }
 
 .nav-item:hover {
-  color: rgb(144, 19, 254);
+  animation-name: navItemColor;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
 }
 
 .active-tab {
@@ -93,6 +96,14 @@ html, body {
   left: 0px;
   padding: 20px;
   color: white !important;
+  opacity: 0.1;
+}
+
+.book-info:hover {
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
 }
 
 .book-item:hover {
@@ -109,23 +120,23 @@ html, body {
   width: 100%;
 }
 
-.buttons-div>div {
-  opacity: .5
+.buttons-div > div {
+  opacity: 0.5;
 }
 
-.buttons-div>a {
-  opacity: .5
+.buttons-div > a {
+  opacity: 0.5;
 }
 
-.buttons-div>div:hover {
-  opacity: 1
+.buttons-div > div:hover {
+  opacity: 1;
 }
 
-.buttons-div>a:hover {
-  opacity: 1
+.buttons-div > a:hover {
+  opacity: 1;
 }
 
-.buttons-div>a {
+.buttons-div > a {
   width: 100% !important;
 }
 
@@ -184,11 +195,13 @@ html, body {
   font-size: 18px;
   padding: 8px;
   width: 200px;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .search-btn:hover {
-  opacity: 1
+  animation-name: searchBtnEffect;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 .scroll-top-div {
@@ -198,6 +211,9 @@ html, body {
 .scroll-top-div:hover {
   background-color: rgb(144, 19, 254);
   color: white !important;
+  animation-name: scrollTopAnimation;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 .carousel-inner {
@@ -206,7 +222,7 @@ html, body {
 
 .img-thumbnail {
   padding: 0px;
-} 
+}
 
 h6 {
   font-weight: bolder;
@@ -222,7 +238,7 @@ a {
 }
 
 a:visited {
-  color: white
+  color: white;
 }
 
 a:hover {
@@ -237,7 +253,7 @@ form {
   z-index: 3;
 }
 
-form>input {
+form > input {
   border: none;
   border-bottom: 1px solid rgb(144, 19, 254);
   color: rgb(144, 19, 254);
@@ -245,7 +261,7 @@ form>input {
   margin-right: 15px;
 }
 
-input::focus {
+input:focus {
   border: 1px solid rgb(144, 19, 254) !important;
   -webkit--border: 1px solid rgb(144, 19, 254) !important;
 }
@@ -293,5 +309,58 @@ input::focus {
   }
   .header-img {
     height: 750px !important;
+  }
+  .search-input:focus {
+    animation: inputWidthStretch;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes searchBtnEffect {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes inputWidthStretch {
+  0% {
+    width: 25%;
+  }
+
+  100% {
+    width: 60%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scrollTopAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+    box-shadow: 0px 0px 0px 8px rgba(122, 122, 122, 1);
+  }
+}
+
+@keyframes navItemColor {
+  0% {
+    color: white;
+  }
+  100% {
+    color: rgb(144, 19, 254);
   }
 }
