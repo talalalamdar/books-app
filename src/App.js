@@ -30,7 +30,7 @@ class App extends Component {
       <div className="App">
         <Router history={history}>
           <div>
-            <div style={{ width: '100%', height: '750px', position: 'relative' }} className="header-img">
+            <div style={{ width: '100%', height: '100%', position: 'relative' }} className="header-img">
               <Carousel controls={false}
                 style={{ width: '100%', height: '100%' }}>
                 {this.imagesArray.map(image => {

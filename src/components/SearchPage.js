@@ -87,7 +87,7 @@ class SearchPage extends Component {
             <div className="search-page">
                 <form id="scroll-to-submit" onSubmit={(e) => this.submitSearch(e)}>
                     <div className='form-wrapper'>
-                        <input value={searchQuery} onBlur={() => this.style={animationName: 'InputBlur'}} className="search-input" placeholder="Search for a book..." onChange={e => this.handleInputChange(e.target.value)}></input>
+                        <input value={searchQuery} className="search-input" placeholder="Search for a book..." onChange={e => this.handleInputChange(e.target.value)}></input>
                         <Box type="submit" className="search-btn" onClick={this.submitSearch}>
                             <span style={{ display: 'inline-block' }}>
                                 Search <Octicon className="search-icon" icon={Search} />

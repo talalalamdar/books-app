@@ -22,7 +22,8 @@ body {
 }
 
 .header-img {
-  height: 500px !important;
+  height: 100vh!important;
+  z-index: 10
 }
 
 .App-title {
@@ -71,7 +72,7 @@ body {
   padding: 20px;
   justify-content: center;
   align-items: center;
-  min-height: 700px;
+  min-height: 100vh;
   background-color: #222;
 }
 
@@ -101,9 +102,8 @@ body {
 
 .book-info:hover {
   animation-name: fadeIn;
-  animation-duration: 0.3s;
+  animation-duration: 0.2s;
   animation-fill-mode: forwards;
-  animation-timing-function: ease-in;
 }
 
 .book-item:hover {
@@ -184,6 +184,12 @@ body {
   margin-right: 10px;
 }
 
+.search-input:focus {
+  outline: none;
+  border: none;
+  border-bottom:  1px solid rgb(144, 19, 254);
+}
+
 .search-btn {
   height: 50px;
   border-radius: 4px;
@@ -196,12 +202,13 @@ body {
   padding: 8px;
   width: 200px;
   opacity: 0.5;
+  transition: searchBtnEffect 1s;
 }
 
 .search-btn:hover {
   animation-name: searchBtnEffect;
   animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+  animation-fill-mode: both;
 }
 
 .scroll-top-div {
@@ -286,7 +293,7 @@ input:focus {
     margin: 150px;
   }
   .header-img {
-    height: 650px !important;
+    /* height: 650px !important; */
   }
 }
 
@@ -308,12 +315,13 @@ input:focus {
     font-size: 4em;
   }
   .header-img {
-    height: 750px !important;
+    /* height: 750px !important;*/
   }
   .search-input:focus {
+    outline: none;
+    border: none;
     animation: inputWidthStretch;
     animation-duration: 1s;
-    animation-timing-function: ease-in;
     animation-fill-mode: forwards;
   }
 }
